@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  transition: all 1s;
+  width: 100px;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  z-index: 999;
+  transition: all 1s;
+}
