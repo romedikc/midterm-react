@@ -1,5 +1,5 @@
 import React from 'react';
-import './TextAreaInput.scss'
+import './TextArea.scss'
 
 const TextAreaInput = ({setValue}) => {
 
