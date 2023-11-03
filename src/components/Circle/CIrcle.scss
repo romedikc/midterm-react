@@ -1,134 +1,133 @@
-* {
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+$speed: 20s;
+html, body {
+  font-size: 32px;
+}
+
+body {
+  font-family: 'Courgette', cursive;
+  background-color: #000;
+  background-image: radial-gradient(circle, #296db1, #000 17em);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 75em;
+  perspective-origin: 50% calc(50% - 5em);
+  transform-style: preserve-3d;
+}
+
+.container {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+}
+
+.platform {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: platform $speed*0.4 infinite ease-in-out;
+
+  @keyframes platform {
+    0%, 100% { transform: translateY(-0.5em);}
+    50% { transform: translateY(0.5em);}
   }
-  body, .wrapper {
-    font-family: "Archivo Black", sans-serif;
-    background: linear-gradient(180deg, #04fafd, 5%, #235a90, 50%, #030423);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+}
+
+.plate {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+
+  &:nth-child(1) {
+    width: 16em; height: 16em;
+    background-image: radial-gradient(#444, #111);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(2em);
   }
-  .wrapper h1 {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &:nth-child(2) {
+    width: 14em; height: 14em;
+    background-image: radial-gradient(#000, #222);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(-2em);
+  }
+
+  &::before {
+    content: '';
     position: absolute;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    word-spacing: 2px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: 888;
-    text-transform: uppercase;
+    top: 50%; left: 50%;
+    width: 100%; height: 0.5em;
+    background-image: linear-gradient(90deg, #222, #333, #111, #222);
+    transform: translateX(-50%) rotateX(-90deg) translateZ(0.5em);
+    transform-origin: top;
   }
-  .wrapper div {
-    height: 80px;
-    width: 80px;
-    border: 2px solid #085480b3;
-    border-radius: 50px;
+  &::after {
+    content: '';
     position: absolute;
-    top: 10%;
-    left: 10%;
-    animation: 4s linear infinite;
-    opacity: 30%;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    background-image: linear-gradient(90deg, #222, #333, #111, #222);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) translateZ(-0.5em);
   }
-  div .dot {
-    height: 15px;
-    width: 15px;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    font-size: 20px;
+}
+
+.panel {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 3em;
+  clip-path: polygon(0 0, 100% 0, 93.25% 100%, 6.75% 100%);
+  animation: panalRotate $speed*3 infinite linear;
+  color: white;
+  text-shadow:
+          0 0 5px #0af,
+          0 0 15px #0af,
+          0 0 30px #0af;
+
+  @keyframes panalRotate {
+
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+
+    from { transform: translate(-50%, calc(-50% + 0.25em)) rotateY(0) translateZ(7em) rotateX(-15deg); }
+    to { transform: translate(-50%, calc(-50% + 0.25em)) rotateY(360deg) translateZ(7em) rotateX(-15deg); }
   }
-  
-  div .letter {
-    font-size: 50px;
-    text-align: center;
-    color: #0d62a7;
-  }
-  .wrapper div:nth-child(1) {
-    top: 20%;
-    left: 20%;
-    animation: animate 8s linear infinite;
-  }
-  .wrapper div:nth-child(2) {
-    top: 60%;
-    left: 80%;
-    animation: animate 10s linear infinite;
-  }
-  .wrapper div:nth-child(3) {
-    top: 40%;
-    left: 40%;
-    animation: animate 3s linear infinite;
-  }
-  .wrapper div:nth-child(4) {
-    top: 66%;
-    left: 30%;
-    animation: animate 7s linear infinite;
-  }
-  .wrapper div:nth-child(5) {
-    top: 90%;
-    left: 10%;
-    animation: animate 9s linear infinite;
-  }
-  .wrapper div:nth-child(6) {
-    top: 30%;
-    left: 60%;
-    animation: animate 5s linear infinite;
-  }
-  .wrapper div:nth-child(7) {
-    top: 70%;
-    left: 20%;
-    animation: animate 8s linear infinite;
-  }
-  .wrapper div:nth-child(8) {
-    top: 75%;
-    left: 60%;
-    animation: animate 10s linear infinite;
-  }
-  .wrapper div:nth-child(9) {
-    top: 50%;
-    left: 50%;
-    animation: animate 6s linear infinite;
-  }
-  .wrapper div:nth-child(10) {
-    top: 45%;
-    left: 20%;
-    animation: animate 10s linear infinite;
-  }
-  .wrapper div:nth-child(11) {
-    top: 10%;
-    left: 90%;
-    animation: animate 9s linear infinite;
-  }
-  .wrapper div:nth-child(12) {
-    top: 20%;
-    left: 70%;
-    animation: animate 7s linear infinite;
-  }
-  .wrapper div:nth-child(13) {
-    top: 20%;
-    left: 20%;
-    animation: animate 8s linear infinite;
-  }
-  .wrapper div:nth-child(14) {
-    top: 60%;
-    left: 5%;
-    animation: animate 6s linear infinite;
-  }
-  .wrapper div:nth-child(15) {
-    top: 90%;
-    left: 80%;
-    animation: animate 9s linear infinite;
-  }
-  @keyframes animate {
-    0% {
-      transform: scale(0) translateY(0) rotate(70deg);
-    }
-    100% {
-      transform: scale(1.3) translateY(-100px) rotate(360deg);
+
+  $count: 16;
+  @for $i from 0 to $count {
+    &:nth-child(#{$i + 1}) {
+      animation-delay: #{$speed / $count * $i * -3};
+
+      &::after {
+        animation-delay: #{$speed / $count * $i * -1};
+      }
     }
   }
+
+  &::after {
+    position: absolute;
+    top: 50%; left: 50%;
+    //content: "I'm a slow walker but I never walk backwards";
+    font-weight: 700;
+    font-size: 6em;
+    white-space: nowrap;
+    color: #0009;
+    text-shadow:
+            0 0 5px #0af,
+            0 0 15px #0af,
+            0 0 30px #0af;
+    animation: textMove $speed infinite linear;
+  }
+
+  @keyframes textMove {
+    from { transform: translate(5rem, -50%); }
+    to { transform: translate(-42.64rem, -50%); }
+  }
+}
